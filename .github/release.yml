@@ -1,0 +1,9 @@
+on:
+  push:
+    tags:
+      - v*
+changelog:
+  exclude:
+    labels:
+      - ad-hoc
+
