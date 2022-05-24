@@ -1,9 +1,12 @@
-on:
-  push:
-    tags:
-      - v*
 changelog:
   exclude:
     labels:
       - ad-hoc
+  categories:
+    - title: features
+      labels:
+        - feature
+    - title: fixes
+      labels:
+        - fix
 
