@@ -1,7 +1,4 @@
-# automatic release workflow
-
 name: AutoRelease
-
 on:
   push:
     tags:
@@ -14,14 +11,16 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: Set env
-        run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        run: |
+          echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: debug
         run: |
           echo "the tag: $TAG"
           echo "token: ${{ secrets.GITHUB_TOKEN }}"
-      - name: login 
+      - name: login
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token 
           gh auth status
       - name: create release
+        run: |
           gh release create $TAG --generate-notes
