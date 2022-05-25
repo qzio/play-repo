@@ -1,4 +1,7 @@
+# automatic release workflow
+
 name: AutoRelease
+
 on:
   push:
     tags:
