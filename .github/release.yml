@@ -3,10 +3,10 @@ changelog:
     labels:
       - ad-hoc
   categories:
-    - title: features
+    - title: new features 🎉
       labels:
         - feature
-    - title: fixes
+    - title: 🐛fixes
       labels:
         - fix
 
