@@ -1,8 +1,8 @@
 name: AutoPreRelease
 on:
   push:
-    tags:
-      - p*
+    branches:
+      - main
 
 env:
   REL_NAME: QA

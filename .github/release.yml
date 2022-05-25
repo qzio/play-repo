@@ -1,7 +1,7 @@
 changelog:
   exclude:
     labels:
-      - ad-hoc
+      - adhoc
   categories:
     - title: new features 🎉
       labels:
