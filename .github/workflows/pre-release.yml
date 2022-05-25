@@ -1,0 +1,31 @@
+name: AutoPreRelease
+on:
+  push:
+    tags:
+      - p*
+
+env:
+  REL_NAME: QA
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Set env
+        run: |
+          echo "TAG=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_ENV
+      - name: debug
+        run: |
+          echo "the tag: $TAG"
+          echo "token: ${{ secrets.GITHUB_TOKEN }}"
+      - name: login
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token 
+          gh auth status
+      - name: delete previous
+        run: |
+          gh release delete -y $REL_NAME
+      - name: create release
+        run: |
+          gh release create $REL_NAME -p --generate-notes
