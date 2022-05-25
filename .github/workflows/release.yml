@@ -13,8 +13,9 @@ jobs:
       - name: debug
         run: |
           echo "the tag: $TAG"
+          echo "token: ${{ secrets.GITHUB_TOKEN }}"
       - name: create release
         run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token 
+          gh auth status
           gh release create $TAG --generate-notes
-          
-
