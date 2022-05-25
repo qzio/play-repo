@@ -26,6 +26,7 @@ jobs:
       - name: delete previous
         run: |
           gh release delete -y $REL_NAME
+          git push origin :$REL_NAME
       - name: create release
         if: always()
         run: |
