@@ -27,5 +27,6 @@ jobs:
         run: |
           gh release delete -y $REL_NAME
       - name: create release
+        if: always()
         run: |
           gh release create $REL_NAME -p --generate-notes
